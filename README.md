@@ -14,7 +14,6 @@
 ![Grafana](https://img.shields.io/badge/Grafana-12.1-F46800?logo=grafana&logoColor=white)
 ![Mailpit](https://img.shields.io/badge/Mailpit-1.32-0F766E)
 ![GitHub Actions](https://img.shields.io/badge/GitHub_Actions-CI-2088FF?logo=githubactions&logoColor=white)
-![Claude Code](https://img.shields.io/badge/Claude_Code-plugin-D97757?logo=claude&logoColor=white)
 
 Lab local d'orchestration ETL : **Apache Airflow 3.4** dans Docker, une interface de suivi
 lisible (**Pipeline Lens**), des alertes d'échec, une supervision technique (Prometheus + Grafana)
