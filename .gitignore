@@ -13,4 +13,4 @@ lens/audit/
 
 # Plugin : état local
 .pipeline-lens/
-plugins/**/__pycache__/
+claude-plugin/**/__pycache__/

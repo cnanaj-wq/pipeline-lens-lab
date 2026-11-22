@@ -55,6 +55,7 @@ def info(msg: str) -> None:
 def run(cmd: list[str], cwd: Path | None = None, check: bool = True, quiet: bool = False,
         env: dict | None = None) -> subprocess.CompletedProcess:
     exe = shutil.which(cmd[0]) or cmd[0]
+    env = {**(env or os.environ), "PYTHONIOENCODING": "utf-8"}
     res = subprocess.run([exe, *cmd[1:]], cwd=cwd, env=env, text=True,
                          capture_output=quiet, encoding="utf-8", errors="replace")
     if check and res.returncode != 0:

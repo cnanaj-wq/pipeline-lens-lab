@@ -45,9 +45,9 @@ Puis :
 Sans Claude Code, le même moteur s'utilise directement :
 
 ```bash
-python plugins/pipeline-lens/scripts/pipeline_lens.py diagnostic
-python plugins/pipeline-lens/scripts/pipeline_lens.py installer --dossier ~/pipeline-lens-lab
-python plugins/pipeline-lens/scripts/pipeline_lens.py demarrer
+python claude-plugin/pipeline-lens/scripts/pipeline_lens.py diagnostic
+python claude-plugin/pipeline-lens/scripts/pipeline_lens.py installer --dossier ~/pipeline-lens-lab
+python claude-plugin/pipeline-lens/scripts/pipeline_lens.py demarrer
 ```
 
 ## Démarrer (à la main)

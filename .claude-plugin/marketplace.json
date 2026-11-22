@@ -10,7 +10,7 @@
   "plugins": [
     {
       "name": "pipeline-lens",
-      "source": "./plugins/pipeline-lens",
+      "source": "./claude-plugin/pipeline-lens",
       "description": "Installe, démarre et vérifie Airflow 3 + Pipeline Lens sur http://localhost:5176. Greffe Qlik Cloud en option.",
       "version": "1.0.0"
     }
