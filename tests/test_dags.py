@@ -1,7 +1,7 @@
 """Contrôle des DAG : chargement sans erreur et conventions du lab.
 
 Lancé par GitHub Actions (.github/workflows/dags.yml) ou en local :
-    docker compose run --rm --no-deps -v "C:/airflow/tests:/opt/airflow/tests" --entrypoint "" airflow-scheduler \
+    docker compose run --rm --no-deps -v "$(pwd)/tests:/opt/airflow/tests" --entrypoint "" airflow-scheduler \
         bash -c "pip install -q pytest && python -m pytest /opt/airflow/tests -q -p no:cacheprovider"
 """
 from pathlib import Path
