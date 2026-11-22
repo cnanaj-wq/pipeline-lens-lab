@@ -1,0 +1,18 @@
+{
+  "name": "pipeline-lens-lab",
+  "owner": {
+    "name": "Cédric NANA",
+    "url": "https://github.com/cnanaj-wq"
+  },
+  "metadata": {
+    "description": "Lab Airflow 3 + Pipeline Lens, reproductible en local avec Claude Code."
+  },
+  "plugins": [
+    {
+      "name": "pipeline-lens",
+      "source": "./plugins/pipeline-lens",
+      "description": "Installe, démarre et vérifie Airflow 3 + Pipeline Lens sur http://localhost:5176. Greffe Qlik Cloud en option.",
+      "version": "1.0.0"
+    }
+  ]
+}

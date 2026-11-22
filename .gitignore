@@ -1,0 +1,16 @@
+.env
+config/passwords.json
+config/*.generated
+logs/
+data/
+__pycache__/
+lens/node_modules/
+lens/dist/
+monitoring/grafana.env
+lens/dist-demo/
+backups/
+lens/audit/
+
+# Plugin : état local
+.pipeline-lens/
+plugins/**/__pycache__/

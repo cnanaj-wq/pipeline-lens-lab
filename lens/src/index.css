@@ -1,0 +1,147 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+@import "shadcn/tailwind.css";
+@import "@fontsource/ibm-plex-sans/latin-400.css";
+@import "@fontsource/ibm-plex-sans/latin-500.css";
+@import "@fontsource/ibm-plex-sans/latin-600.css";
+@import "@fontsource/ibm-plex-mono/latin-400.css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+    --font-heading: var(--font-sans);
+    --font-sans: 'IBM Plex Sans', system-ui, sans-serif;
+    --font-mono: 'IBM Plex Mono', ui-monospace, monospace;
+    --color-ok: var(--ok);
+    --color-ko: var(--ko);
+    --color-run: var(--run);
+    --color-wait: var(--wait);
+    --color-warn: var(--warn);
+    --color-flow: var(--flow);
+    --color-flow-soft: var(--flow-soft);
+    --color-ink-soft: var(--ink-soft);
+    --color-sidebar-ring: var(--sidebar-ring);
+    --color-sidebar-border: var(--sidebar-border);
+    --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+    --color-sidebar-accent: var(--sidebar-accent);
+    --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+    --color-sidebar-primary: var(--sidebar-primary);
+    --color-sidebar-foreground: var(--sidebar-foreground);
+    --color-sidebar: var(--sidebar);
+    --color-chart-5: var(--chart-5);
+    --color-chart-4: var(--chart-4);
+    --color-chart-3: var(--chart-3);
+    --color-chart-2: var(--chart-2);
+    --color-chart-1: var(--chart-1);
+    --color-ring: var(--ring);
+    --color-input: var(--input);
+    --color-border: var(--border);
+    --color-destructive: var(--destructive);
+    --color-accent-foreground: var(--accent-foreground);
+    --color-accent: var(--accent);
+    --color-muted-foreground: var(--muted-foreground);
+    --color-muted: var(--muted);
+    --color-secondary-foreground: var(--secondary-foreground);
+    --color-secondary: var(--secondary);
+    --color-primary-foreground: var(--primary-foreground);
+    --color-primary: var(--primary);
+    --color-popover-foreground: var(--popover-foreground);
+    --color-popover: var(--popover);
+    --color-card-foreground: var(--card-foreground);
+    --color-card: var(--card);
+    --color-foreground: var(--foreground);
+    --color-background: var(--background);
+    --radius-sm: calc(var(--radius) * 0.6);
+    --radius-md: calc(var(--radius) * 0.8);
+    --radius-lg: var(--radius);
+    --radius-xl: calc(var(--radius) * 1.4);
+    --radius-2xl: calc(var(--radius) * 1.8);
+    --radius-3xl: calc(var(--radius) * 2.2);
+    --radius-4xl: calc(var(--radius) * 2.6);
+}
+
+:root {
+    /* Pipeline Lens — palette « salle de contrôle claire » */
+    --background: #F2F5F9;
+    --foreground: #142033;
+    --card: #FFFFFF;
+    --card-foreground: #142033;
+    --popover: #FFFFFF;
+    --popover-foreground: #142033;
+    --primary: #1F6F80;
+    --primary-foreground: #FFFFFF;
+    --secondary: #E7EDF4;
+    --secondary-foreground: #142033;
+    --muted: #E7EDF4;
+    --muted-foreground: #52627A;
+    --accent: #E3EEF1;
+    --accent-foreground: #142033;
+    --destructive: #C8382E;
+    --border: #D9E1EB;
+    --input: #D9E1EB;
+    --ring: #1F6F80;
+    --radius: 0.5rem;
+    --ok: #1E7F52;
+    --ko: #C8382E;
+    --run: #2F62D0;
+    --wait: #8592A6;
+    --warn: #A86A10;
+    --flow: #1F6F80;
+    --flow-soft: #CFE4E8;
+    --ink-soft: #52627A;
+    --chart-1: #1F6F80; --chart-2: #2F62D0; --chart-3: #1E7F52; --chart-4: #A86A10; --chart-5: #C8382E;
+    --sidebar: #E9EEF4; --sidebar-foreground: #142033; --sidebar-primary: #1F6F80; --sidebar-primary-foreground: #FFFFFF;
+    --sidebar-accent: #DCE6EE; --sidebar-accent-foreground: #142033; --sidebar-border: #D9E1EB; --sidebar-ring: #1F6F80;
+}
+
+.dark {
+    --background: #0E1622;
+    --foreground: #E4EBF4;
+    --card: #152133;
+    --card-foreground: #E4EBF4;
+    --popover: #152133;
+    --popover-foreground: #E4EBF4;
+    --primary: #5FB9C9;
+    --primary-foreground: #0E1622;
+    --secondary: #1C2A3F;
+    --secondary-foreground: #E4EBF4;
+    --muted: #1C2A3F;
+    --muted-foreground: #9AABC2;
+    --accent: #1B3340;
+    --accent-foreground: #E4EBF4;
+    --destructive: #F0776D;
+    --border: #26364C;
+    --input: #26364C;
+    --ring: #5FB9C9;
+    --ok: #4CC38A;
+    --ko: #F0776D;
+    --run: #7FA6F5;
+    --wait: #8C9BB1;
+    --warn: #E0A54A;
+    --flow: #5FB9C9;
+    --flow-soft: #1B3A45;
+    --ink-soft: #9AABC2;
+    --chart-1: #5FB9C9; --chart-2: #7FA6F5; --chart-3: #4CC38A; --chart-4: #E0A54A; --chart-5: #F0776D;
+    --sidebar: #111C2B; --sidebar-foreground: #E4EBF4; --sidebar-primary: #5FB9C9; --sidebar-primary-foreground: #0E1622;
+    --sidebar-accent: #1C2A3F; --sidebar-accent-foreground: #E4EBF4; --sidebar-border: #26364C; --sidebar-ring: #5FB9C9;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+    }
+  body {
+    @apply bg-background text-foreground;
+    }
+  html {
+    @apply font-sans;
+    }
+}
+@layer base {
+  :focus-visible { outline: 2px solid var(--ring); outline-offset: 2px; }
+  .tabular { font-variant-numeric: tabular-nums; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: 0.01ms !important; animation-iteration-count: 1 !important; transition-duration: 0.01ms !important; }
+}

@@ -1,0 +1,12 @@
+{
+  "name": "pipeline-lens",
+  "version": "1.0.0",
+  "description": "Installe et pilote le lab Apache Airflow 3 + Pipeline Lens (http://localhost:5176), avec la greffe optionnelle du lab Qlik Cloud × Airflow.",
+  "author": {
+    "name": "Cédric NANA",
+    "url": "https://github.com/cnanaj-wq"
+  },
+  "homepage": "https://github.com/cnanaj-wq/pipeline-lens-lab",
+  "repository": "https://github.com/cnanaj-wq/pipeline-lens-lab",
+  "keywords": ["airflow", "qlik", "dataops", "pipeline", "observability"]
+}

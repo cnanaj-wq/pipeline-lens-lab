@@ -1,0 +1,25 @@
+# Contrôle des DAG à chaque push ou pull request (s'exécute seulement une fois le dépôt sur GitHub).
+name: Contrôle des DAG
+
+on:
+  push:
+    paths: ["dags/**", "tests/**", ".github/workflows/dags.yml"]
+  pull_request:
+    paths: ["dags/**", "tests/**"]
+
+jobs:
+  dags:
+    runs-on: ubuntu-latest
+    container:
+      # Même version que le lab : variable de dépôt AIRFLOW_VERSION (Settings > Variables), 3.4.0 par défaut.
+      image: apache/airflow:${{ vars.AIRFLOW_VERSION || '3.4.0' }}
+      options: --user 0  # l'action checkout doit pouvoir écrire dans l'espace de travail
+    steps:
+      - uses: actions/checkout@v4
+      - name: Tests de chargement et conventions
+        env:
+          AIRFLOW__CORE__LOAD_EXAMPLES: "false"
+        run: |
+          airflow db migrate > /dev/null
+          pip install -q pytest
+          python -m pytest tests -q -p no:cacheprovider

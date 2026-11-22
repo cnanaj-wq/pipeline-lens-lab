@@ -1,0 +1,36 @@
+# Tests de Pipeline Lens à chaque push : unitaires, intégration du proxy, contrat d'API, build, puis E2E.
+name: Pipeline Lens
+
+on:
+  push:
+    paths: ["lens/**", ".github/workflows/lens.yml"]
+  pull_request:
+    paths: ["lens/**"]
+
+jobs:
+  tests:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: lens
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 24
+          cache: npm
+          cache-dependency-path: lens/package-lock.json
+      - run: npm ci
+      - name: Tests unitaires, intégration du proxy et contrat d'API
+        run: npm test
+      - name: Compilation
+        run: npm run build
+      - name: Tests de bout en bout (faux Airflow)
+        run: |
+          npx playwright install --with-deps chromium
+          npm run test:e2e
+      - uses: actions/upload-artifact@v4
+        if: failure()
+        with:
+          name: rapport-playwright
+          path: lens/playwright-report

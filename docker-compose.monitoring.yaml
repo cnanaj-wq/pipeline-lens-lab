@@ -1,0 +1,47 @@
+# Supervision technique (option) : Airflow → StatsD → Prometheus → Grafana
+# Lancement : docker compose -f docker-compose.yaml -f docker-compose.monitoring.yaml up -d
+# Grafana : http://localhost:3001 (lecture sans compte ; compte admin dans monitoring/grafana.env)
+
+x-metrics-env: &metrics-env
+  AIRFLOW__METRICS__STATSD_ON: "true"
+  AIRFLOW__METRICS__STATSD_HOST: statsd-exporter
+  AIRFLOW__METRICS__STATSD_PORT: "9125"
+  AIRFLOW__METRICS__STATSD_PREFIX: airflow
+
+services:
+  airflow-scheduler:
+    environment: *metrics-env
+  airflow-dag-processor:
+    environment: *metrics-env
+  airflow-apiserver:
+    environment: *metrics-env
+
+  statsd-exporter:
+    image: prom/statsd-exporter:v0.28.0
+    command: ["--statsd.mapping-config=/etc/statsd/mapping.yml"]
+    volumes:
+      - ./monitoring/statsd-mapping.yml:/etc/statsd/mapping.yml:ro
+    restart: unless-stopped
+
+  prometheus:
+    image: prom/prometheus:v3.5.0
+    volumes:
+      - ./monitoring/prometheus.yml:/etc/prometheus/prometheus.yml:ro
+    ports:
+      - "127.0.0.1:9091:9090"
+    restart: unless-stopped
+
+  grafana:
+    image: grafana/grafana:12.1.0
+    env_file: monitoring/grafana.env
+    environment:
+      GF_AUTH_ANONYMOUS_ENABLED: "true"
+      GF_AUTH_ANONYMOUS_ORG_ROLE: Viewer
+      GF_USERS_DEFAULT_LANGUAGE: fr-FR
+      GF_DASHBOARDS_DEFAULT_HOME_DASHBOARD_PATH: /var/lib/grafana/dashboards/airflow.json
+    volumes:
+      - ./monitoring/grafana/provisioning:/etc/grafana/provisioning:ro
+      - ./monitoring/grafana/dashboards:/var/lib/grafana/dashboards:ro
+    ports:
+      - "127.0.0.1:3001:3000"
+    restart: unless-stopped
