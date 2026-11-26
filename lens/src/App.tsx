@@ -279,7 +279,7 @@ export default function App() {
       {DEMO && (
         <footer className="mx-auto max-w-[1440px] border-t px-4 py-6 text-xs text-muted-foreground lg:px-6">
           <p>Pipeline Lens, une vue de suivi pour Apache Airflow : application indépendante, non affiliée à l’Apache Software Foundation.</p>
-          <p className="mt-1">Cédric NANA, consultant Data Analytics.</p>
+          <p className="mt-1">Cédric NANA — Expert BI & Data | Analytics & AI Automation.</p>
         </footer>
       )}
 
